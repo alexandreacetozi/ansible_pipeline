@@ -1,1 +1,12 @@
-#playbook
+---
+- name: Display /etc/hosts file
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Show /etc/hosts content
+      command: cat /etc/hosts
+      register: hosts_file
+
+    - name: Print /etc/hosts content
+      debug:
+        var: hosts_file.stdout
